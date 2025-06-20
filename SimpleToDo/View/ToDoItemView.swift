@@ -25,13 +25,15 @@ struct ToDoItemView: View {
             Text(todo.title)
                 .strikethrough(todo.isCompleted)
                 .foregroundColor(todo.isCompleted ? .gray : nil)
+            Text(todo.dueDateFormatted)
+                .strikethrough(todo.isCompleted)
+                .foregroundColor(todo.isCompleted ? .gray : nil)
         }
     }
 }
 
 #Preview {
     let viewModel = ToDoListViewModel()
-    let todo = ToDoItem(title: "Task", isCompleted: true)
-    viewModel.todos = [todo]
-    return ToDoItemView(todo: todo, viewModel: viewModel)
+    let todo = ToDoItem(title: "Task", dueDate: Date(), isCompleted: true)
+    ToDoItemView(todo: todo, viewModel: viewModel)
 }
