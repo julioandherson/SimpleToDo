@@ -27,7 +27,6 @@ struct ContentView: View {
                         })
                         {
                             Image(systemName: "calendar.circle.fill")
-                                .foregroundStyle(.gray)
                                 .padding(.leading)
                         }
                         
