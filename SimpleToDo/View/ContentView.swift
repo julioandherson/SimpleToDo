@@ -14,42 +14,54 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                HStack {
-                    TextField("Enter new task", text: $viewModel.newTaskTitle,onCommit: {
-                        viewModel.addTask()
-                    })
-                    .padding()
-                    
-                    // REMOVE
-                    Image(systemName: "arrow.down.circle.fill")
-                        .foregroundStyle(.green)
-                    Image(systemName: "arrow.right.circle.fill")
-                        .foregroundStyle(.yellow)
-                    Image(systemName: "arrow.up.circle.fill")
-                        .foregroundStyle(.red)
-                    // REMOVE
-                    
-                    Button(action: viewModel.addButtonTapped) {
-                        Image(systemName: "plus.circle.fill")
-                    }
-                    .disabled(viewModel.newTaskTitle.isEmpty)
-                    .padding()
-                    
-                    Button(action: {
-                        showDatePicker.toggle()
-                    })
-                    {
-                        Image(systemName: "calendar.circle.fill")
-                            .foregroundStyle(.gray)
-                            .padding(.trailing)
-                    }
-                }
                 
-                List {
-                    ForEach(viewModel.todos) { todo in
-                        ToDoItemView(todo: todo, viewModel: viewModel)
+                VStack {
+                    HStack {
+                        TextField("Enter new task", text: $viewModel.newTaskTitle,onCommit: {
+                            viewModel.addTask()
+                        })
+                        .padding()
+                        
+                        Button(action: {
+                            showDatePicker.toggle()
+                        })
+                        {
+                            Image(systemName: "calendar.circle.fill")
+                                .foregroundStyle(.gray)
+                                .padding(.leading)
+                        }
+                        
+                        Button(action: viewModel.addButtonTapped) {
+                            Image(systemName: "plus.circle.fill")
+                        }
+                        .disabled(viewModel.newTaskTitle.isEmpty)
+                        .padding()
+                        
                     }
-                    .onDelete(perform: viewModel.deleteTask)
+                    
+                    HStack {
+                        Text("Prioridade:")
+                        
+                        Picker("Prioridade", selection: $viewModel.selectedPriority) {
+                            ForEach(Priority.allCases) { priority in
+                                Label(priority.rawValue, systemImage: priority.symbol)
+                                    .tag(priority)
+                            }
+                            
+                        }
+                        .pickerStyle(.menu)
+                        .accentColor(viewModel.selectedPriority.color)
+
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading)
+
+                    List {
+                        ForEach(viewModel.todos) { todo in
+                            ToDoItemView(todo: todo, viewModel: viewModel)
+                        }
+                        .onDelete(perform: viewModel.deleteTask)
+                    }
                 }
             }
             .navigationTitle("To-Do List")
