@@ -14,6 +14,12 @@
 - **Mark as done:** Mark tasks as completed to track your progress.
 - **Data persistence:** All information is saved locally, ensuring your tasks are always available even after closing the app.
 
+## Screenshot
+
+Abaixo está um exemplo da tela principal do SimpleToDo em execução no simulador iOS:
+
+![Main Screen](docs/simpletodolist-1.png)
+
 ## Technologies Used
 
 - **SwiftUI:** Modern, reactive UI framework.
