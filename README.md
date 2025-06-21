@@ -18,7 +18,7 @@
 
 Abaixo está um exemplo da tela principal do SimpleToDo em execução no simulador iOS:
 
-![Main Screen](docs/simpletodolist-1.png)
+<img src="docs/simpletodolist-1.png" alt="Main Screen" width="400"/>
 
 ## Technologies Used
 
