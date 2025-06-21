@@ -76,7 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				28C9C19F2E0240BF00E88144 /* SimpleToDo */,
-				28C9C1C72E0240E700E88144 /* New Group */,
 				28C9C1AD2E0240C100E88144 /* SimpleToDoTests */,
 				28C9C1B72E0240C100E88144 /* SimpleToDoUITests */,
 				28C9C19E2E0240BF00E88144 /* Products */,
@@ -91,13 +90,6 @@
 				28C9C1B42E0240C100E88144 /* SimpleToDoUITests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		28C9C1C72E0240E700E88144 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

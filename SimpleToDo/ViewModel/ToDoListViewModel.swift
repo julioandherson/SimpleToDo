@@ -14,6 +14,9 @@ class ToDoListViewModel: ObservableObject {
 
     @Published var todos: [ToDoItem] = []
     @Published var newTaskTitle = ""
+    @Published var selectedDate = Date()
+    @Published var selectedPriority: Priority = .medium
+
     @AppStorage(todosKey) private var todosData = Data()
     
     private var cancellables = Set<AnyCancellable>()
@@ -40,8 +43,10 @@ class ToDoListViewModel: ObservableObject {
     func addTask() {
         guard !newTaskTitle.isEmpty else { return }
         
-        todos.append(ToDoItem(title: newTaskTitle, isCompleted: false))
+        todos.append(ToDoItem(title: newTaskTitle, dueDate: selectedDate, priority: selectedPriority, isCompleted: false))
         newTaskTitle = ""
+        selectedDate = Date()
+        selectedPriority = .medium
         saveTodos()
     }
     
