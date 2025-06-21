@@ -39,9 +39,9 @@ struct ContentView: View {
                     }
                     
                     HStack {
-                        Text("Prioridade:")
+                        Text("Priority:")
                         
-                        Picker("Prioridade", selection: $viewModel.selectedPriority) {
+                        Picker("", selection: $viewModel.selectedPriority) {
                             ForEach(Priority.allCases) { priority in
                                 Label(priority.rawValue, systemImage: priority.symbol)
                                     .tag(priority)
